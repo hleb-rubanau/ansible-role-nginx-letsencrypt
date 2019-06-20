@@ -1,0 +1,39 @@
+---
+- name: dependencies
+  apt:
+    name:
+      - python-docker
+      - docker-compose
+- name: check installation status
+  stat:
+    path: "{{ nginx_le_install_dir }}/docker-compose.yml"
+  register: nginx_le_preexisting_installation
+- set_fact:
+    nginx_le_already_installed: "{{ nginx_le_preexisting_installation.stat.exists  }}"
+    nginx_le_dropins_directory: "{{ nginx_le_install_dir }}/data/configs"
+    nginx_le_static_directory: "{{ nginx_le_install_dir }}/data/storage/static"
+- name: nginx static directory and parent dirs
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items: 
+    - "{{ nginx_le_dropins_directory }}"
+    - "{{ nginx_le_static_directory }}"
+- name: nginx dummy index file
+  template:
+    src: dummy_index.html
+    dest: "{{ nginx_le_static_directory }}/dummy_index.html"
+- name: initial nginx config
+  template:
+    src: default.conf
+    dest: "{{ nginx_le_dropins_directory }}/default.conf" 
+  when: not nginx_le_already_installed
+- name: compose file
+  template:
+    src: docker-compose.yml
+    dest: "{{ nginx_le_install_dir}}/docker-compose.yml"
+- name: nginx service
+  docker_compose:
+    project_src: "{{ nginx_le_install_dir }}"
+    project_name: "{{ nginx_le_compose_project_name }}"
+    remove_orphans: yes

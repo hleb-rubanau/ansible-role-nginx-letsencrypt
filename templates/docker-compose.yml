@@ -1,0 +1,14 @@
+version: "3"
+services:
+  nginx:
+    image: hleb/nginx-letsencrypt:1.1
+    restart: unless-stopped
+    network_mode: host
+    volumes: 
+      - ./data/configs:/etc/nginx/conf.d:ro
+      - ./data/storage:/mnt/data
+    environment:
+      - AUTOFILL_DOMAINS=true
+      - PRIMARY_DOMAIN={{ nginx_le_primary_domain }}
+      - SSL_CERT_MODE={{ nginx_le_mode }}
+      - LE_EMAIL={{ nginx_le_account }}
