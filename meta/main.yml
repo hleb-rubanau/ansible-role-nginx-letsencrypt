@@ -1,0 +1,11 @@
+galaxy_info:
+  role_name: nginx-letsencypted
+  author: Hleb Rubanau
+  description: Installs dockerized nginx with letsencrypt support
+  license: MIT
+  min_ansible_version: 2.1
+  galaxy_tags:
+    - docker
+    - nginx
+    - letsencrypt
+  dependencies: []
