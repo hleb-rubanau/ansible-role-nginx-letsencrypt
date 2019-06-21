@@ -27,7 +27,7 @@
   template:
     src: default.conf
     dest: "{{ nginx_le_dropins_directory }}/default.conf" 
-  when: not nginx_le_already_installed
+  when: not "{{ nginx_le_already_installed | bool }}"
 - name: compose file
   template:
     src: docker-compose.yml
@@ -46,4 +46,4 @@
     project_src: "{{ nginx_le_install_dir }}"
     project_name: "{{ nginx_le_compose_project_name }}"
     remove_orphans: yes
-  when: nginx_le_already_installed
+  when: "{{ nginx_le_already_installed | bool }}"
