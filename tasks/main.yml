@@ -10,23 +10,27 @@
   register: nginx_le_preexisting_installation
 - set_fact:
     nginx_le_already_installed: "{{ nginx_le_preexisting_installation.stat.exists  }}"
-    nginx_le_dropins_directory: "{{ nginx_le_install_dir }}/data/configs"
+    nginx_le_configs_directory: "{{ nginx_le_install_dir }}/data/configs"
     nginx_le_static_directory: "{{ nginx_le_install_dir }}/data/storage/static"
 - name: nginx static directory and parent dirs
   file:
     path: "{{ item }}"
     state: directory
   with_items: 
-    - "{{ nginx_le_dropins_directory }}"
+    - "{{ nginx_le_configs_directory }}"
     - "{{ nginx_le_static_directory }}"
 - name: nginx dummy index file
   template:
     src: dummy_index.html
     dest: "{{ nginx_le_static_directory }}/dummy_index.html"
+- name: basic nginx config
+  template:
+    src: catchall.conf
+    dest: "{{ nginx_le_configs_directory }}/do_not_modify_or_remove.conf" 
 - name: initial nginx config
   template:
     src: default.conf
-    dest: "{{ nginx_le_dropins_directory }}/default.conf" 
+    dest: "{{ nginx_le_configs_directory }}/default.conf" 
   when: not ( nginx_le_already_installed | bool )
 - name: compose file
   template:
