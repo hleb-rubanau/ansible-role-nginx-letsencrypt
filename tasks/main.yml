@@ -32,6 +32,9 @@
   template:
     src: docker-compose.yml
     dest: "{{ nginx_le_install_dir}}/docker-compose.yml"
+- wait_for:
+    host: "{{ nginx_le_primary_domain }}"
+  when: nginx_le_already_installed
 - name: nginx service
   docker_compose:
     project_src: "{{ nginx_le_install_dir }}"
