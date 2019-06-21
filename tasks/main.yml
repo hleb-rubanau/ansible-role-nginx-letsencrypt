@@ -32,6 +32,15 @@
   template:
     src: docker-compose.yml
     dest: "{{ nginx_le_install_dir}}/docker-compose.yml"
+- name: envfile for manual compose invocation
+  template:
+    src: envfile
+    dest: "{{ nginx_le_install_dir}}/.env"
+- name: envfile link for visibility
+  file:
+    state: link
+    src: "{{ nginx_le_install_dir}}/.env"
+    dest: "{{ nginx_le_install_dir}}/compose_project_name.env"
 - name: nginx service
   docker_compose:
     project_src: "{{ nginx_le_install_dir }}"
