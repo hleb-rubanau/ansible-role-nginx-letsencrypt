@@ -7,6 +7,9 @@ services:
     volumes: 
       - ./data/configs:/etc/nginx/conf.d:ro
       - ./data/storage:/mnt/data
+      {% for directive in nginx_le_extra_mounts %}
+      - {{ directive }}
+      {%- endfor %}
     environment:
       - AUTOFILL_DOMAINS=true
       - PRIMARY_DOMAIN={{ nginx_le_primary_domain }}

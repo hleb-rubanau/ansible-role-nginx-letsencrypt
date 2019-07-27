@@ -2,3 +2,4 @@
 nginx_le_install_dir: /opt/nginx-letsencrypted
 nginx_le_mode: staging
 nginx_le_compose_project_name: nginx
+nginx_le_extra_mounts: []
