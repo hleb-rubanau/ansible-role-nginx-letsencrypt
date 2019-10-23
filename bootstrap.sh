@@ -6,7 +6,7 @@
 
 set -e
 
-function say() { echo "[$(date '+%F %H:%M:%S')] $*" >&2 }
+function say() { echo "[$(date '+%F %H:%M:%S')] $*" >&2 ; }
 function die() { say "ERROR: $*" ; exit 1 ; }
 function run() { say "RUN: $*" ; $* ; }
 
