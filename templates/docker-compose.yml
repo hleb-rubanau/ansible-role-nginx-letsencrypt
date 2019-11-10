@@ -1,7 +1,7 @@
 version: "3"
 services:
   nginx:
-    image: hleb/nginx-letsencrypt:1.2.2
+    image: hleb/nginx-letsencrypted:1.2.3
     restart: unless-stopped
     network_mode: host
     volumes: 
