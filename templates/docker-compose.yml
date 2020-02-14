@@ -15,3 +15,6 @@ services:
       - PRIMARY_DOMAIN={{ nginx_le_primary_domain }}
       - SSL_CERT_MODE={{ nginx_le_mode }}
       - LE_EMAIL={{ nginx_le_account }}
+{% if nginx_le_logging_options_inline is defined %}
+    logging: { options: { {{ nginx_le_logging_options_inline }} } }
+{% endif %}
