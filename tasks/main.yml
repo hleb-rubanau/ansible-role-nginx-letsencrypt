@@ -46,7 +46,7 @@
     src: "{{ nginx_le_install_dir}}/.env"
     dest: "{{ nginx_le_install_dir}}/compose_project_name.env"
 - name: nginx service
-  docker_compose:
+  docker_service:
     project_src: "{{ nginx_le_install_dir }}"
     project_name: "{{ nginx_le_compose_project_name }}"
     remove_orphans: yes
