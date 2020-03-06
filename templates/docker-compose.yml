@@ -1,4 +1,4 @@
-version: "3"
+version: "{{ nginx_le_compose_version }}"
 services:
   nginx:
     image: hleb/nginx-letsencrypted:1.2.3
