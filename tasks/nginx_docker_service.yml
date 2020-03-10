@@ -1,3 +1,4 @@
+---
 - name: nginx service
   docker_service:
     project_src: "{{ nginx_le_install_dir }}"
