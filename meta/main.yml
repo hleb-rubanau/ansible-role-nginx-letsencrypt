@@ -4,7 +4,7 @@ galaxy_info:
   author: Hleb Rubanau
   description: Installs dockerized nginx with letsencrypt support
   license: MIT
-  min_ansible_version: 2.1
+  min_ansible_version: 2.5
   galaxy_tags:
     - docker
     - nginx
