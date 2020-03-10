@@ -45,7 +45,7 @@
     state: link
     src: "{{ nginx_le_install_dir}}/.env"
     dest: "{{ nginx_le_install_dir}}/compose_project_name.env"
-- include: nginx_docker_service.yml
+- include_tasks: "{{ role_path }}/tasks/nginx_docker_service.yml"
   when: ansible_version.full is version('2.8','<') 
-- include: nginx_docker_compose.yml
+- include_tasks: "{{ role_path }}/tasks/nginx_docker_compose.yml"
   when: ansible_version.full is version('2.8','>=') 
