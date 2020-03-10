@@ -1,0 +1,6 @@
+- name: nginx service
+  docker_compose:
+    project_src: "{{ nginx_le_install_dir }}"
+    project_name: "{{ nginx_le_compose_project_name }}"
+    remove_orphans: yes
+  when: nginx_le_brave_mode or nginx_le_already_installed 
