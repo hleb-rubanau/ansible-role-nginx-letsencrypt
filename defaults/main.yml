@@ -5,3 +5,4 @@ nginx_le_compose_project_name: nginx
 nginx_le_extra_mounts: []
 nginx_le_brave_mode: false
 nginx_le_compose_version: "3"
+nginx_le_image_id: "hleb/nginx-letsencryped:1.2.3"

@@ -1,7 +1,7 @@
 version: "{{ nginx_le_compose_version }}"
 services:
   nginx:
-    image: hleb/nginx-letsencrypted:1.2.3
+    image: {{ nginx_le_image_id }}
     restart: unless-stopped
     network_mode: host
     volumes: 
