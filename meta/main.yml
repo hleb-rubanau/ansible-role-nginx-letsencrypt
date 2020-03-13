@@ -10,5 +10,5 @@ galaxy_info:
     - nginx
     - letsencrypt
   dependencies: []
-dependencies:
-  - docker # e.g. https://github.com/hleb-rubanau/ansible-role-docker
+#dependencies:
+#  - docker # e.g. https://github.com/hleb-rubanau/ansible-role-docker
