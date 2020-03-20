@@ -31,7 +31,7 @@
   template:
     src: default.conf
     dest: "{{ nginx_le_configs_directory }}/default.conf" 
-  when: not ( nginx_le_already_installed | bool )
+    force: no
 - name: compose file
   template:
     src: docker-compose.yml
