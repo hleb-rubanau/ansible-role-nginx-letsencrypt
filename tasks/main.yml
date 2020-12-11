@@ -2,7 +2,7 @@
 - name: dependencies
   apt:
     name:
-      - python-docker
+      - "{{ 'python-docker' if ansible_python_version is version('3','<') else 'python3-docker' }}"
       - docker-compose
 - name: check installation status
   stat:
