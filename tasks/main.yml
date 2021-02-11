@@ -29,7 +29,7 @@
     dest: "{{ nginx_le_configs_directory }}/do_not_modify_or_remove.conf" 
 - name: initial nginx config
   template:
-    src: default.conf
+    src: "{{ nginx_le_default_config_template }}"
     dest: "{{ nginx_le_configs_directory }}/default.conf" 
     force: no
 - name: compose file
