@@ -7,3 +7,5 @@ nginx_le_brave_mode: false
 nginx_le_compose_version: "3"
 nginx_le_image_id: "hleb/nginx-letsencrypted:1.2.3"
 nginx_le_default_config_template: default.conf
+nginx_le_autofill: true
+nginx_le_extra_domains: []
